@@ -17,11 +17,10 @@ ______
 				public void onData(Client client, ByteBuffer data, int bytesRead) {
 					// f.e your command consists of unsigned integer as length of command and rest of the command is just a json string
 		  			boolean error = false;
-					java.nio.ByteBuffer bbuffer = java.nio.ByteBuffer.allocate(nextSize);
 					byte[] buffer = null;
 					if (!error) {
 						buffer = new byte[bytesRead];
-						bbuffer.get(buffer);
+						data.get(buffer);
 						
 						if (packetBufferSize < packetBufferLength + bytesRead) {
 							byte[] tmp = new byte[packetBufferLength + bytesRead];
